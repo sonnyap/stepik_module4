@@ -12,9 +12,17 @@ def pytest_addoption(parser):
 def browser(request):
     user_language = request.config.getoption("language")
     options = Options()
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--incognito")
+    options.add_argument("--disable-dev-shm-usage")
     options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
     print("\nStart browser for test..")
-    browser = webdriver.Chrome(options=options)
+    try:
+        browser = webdriver.Chrome(executable_path='/path/to/updated/chromedriver', options=options)
+    except Exception as e:
+        print("Error during Chrome initialization:", e)
+        raise
     yield browser
     print("\nQuit browser..")
     browser.quit()
