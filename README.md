@@ -11,5 +11,5 @@
 2. Run the required tests:
 
     ```
-    pytest -v --language=en -m run
+    pytest -v --tb=line --language=en -m need_review
     ```
