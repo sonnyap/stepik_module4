@@ -1,8 +1,10 @@
+import random
+
 import pytest
 
+from .pages.basket_page import BasketPage
 from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage
-from .pages.basket_page import BasketPage
 
 
 @pytest.mark.need_review
@@ -67,7 +69,9 @@ class TestUserAddToBasketFromProductPage:
         register_link = "https://selenium1py.pythonanywhere.com/ru/accounts/login/"
         page = LoginPage(browser, register_link)
         page.open()
-        page.register_new_user()
+        email = f"stepik-test-{random.randint(1000000, 100000000)}@test.com"
+        password = f"test-{random.randint(1000000, 100000000)}"
+        page.register_new_user(email, password)
         page.should_be_authorized_user()
 
     def test_user_cant_see_success_message(self, browser, setup):
