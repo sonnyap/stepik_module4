@@ -1,4 +1,4 @@
-## According homework by "Automated Testing with Selenium and Python" cour§
+## According homework by "Automated Testing with Selenium and Python" course
 
 ## Start
 
@@ -12,4 +12,4 @@
 
     ```
     pytest -v --language=en -m run
-    ```
+   ```
